@@ -1,6 +1,24 @@
-import React from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 
 function MountainMember() {
+  const [memberData, setMemberData] = useState([]);
+
+
+  const getMemberData = async () => {
+    try {
+      const res = await axios.get("http://localhost:3002/member_Limit1");
+      console.log(res.data);
+      setMemberData(res.data)
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  useEffect(() => {
+    getMemberData();
+  }, []);
+
   return (
     <div className="mountainMember">
       <h2>MountainMember</h2>
@@ -14,6 +32,8 @@ function MountainMember() {
           <ul>
             <li className="active">會員</li>
             <li>優惠券</li>
+            <li>我的最愛</li>
+            <li>歷史訂單</li>
             <li>成就</li>
             <li>待開發...</li>
           </ul>

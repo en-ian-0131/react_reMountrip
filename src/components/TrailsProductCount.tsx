@@ -1,14 +1,16 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { CartContext } from "../components/context/CartContext";
 
-function TrailsProductCount() {
-  const [count, setCount] = useState(0);
+function TrailsProductCount({ v }: any) {
+  const [count, setCount] = useState(1);
+  const { addItem } = useContext<any>(CartContext);
   return (
-    <div>
+    <>
       <i
         className="fa-solid fa-minus"
         onClick={() => {
-          if (count >= 1) {
-            setCount((count) => count - 1);
+          if (count >= 2) {
+            setCount(count - 1);
           }
         }}
       ></i>
@@ -22,10 +24,19 @@ function TrailsProductCount() {
       <i
         className="fa-solid fa-plus"
         onClick={() => {
-          setCount((count) => count + 1);
+          setCount(count + 1);
         }}
       ></i>
-    </div>
+
+      <button
+        onClick={() => {
+          addItem(v, count);
+          alert(`${v.trail_name} 已加入購物車`)
+        }}
+      >
+        加入購物車
+      </button>
+    </>
   );
 }
 

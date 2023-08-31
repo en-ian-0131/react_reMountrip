@@ -9,7 +9,9 @@ function MountainCart() {
         <table className="table table-striped">
           <thead>
             <tr>
-              <th>checked</th>
+              <th>
+                <input type="checkbox" />
+              </th>
               <th>名稱</th>
               <th>價格</th>
               <th>數量</th>
@@ -20,7 +22,9 @@ function MountainCart() {
           </thead>
           <tbody>
             <tr>
-              <td>checked</td>
+              <td className="table_input_checkbox">
+                <input type="checkbox" />
+              </td>
               <td>司瑪庫斯</td>
               <td>$ 699</td>
               <td className="tableCount">

@@ -1,5 +1,6 @@
 export const initialization: object = {
   cartItem: [],
+  quantity:0
 };
 
 export const CartReducer = (state: any, action: any): any => {
@@ -9,7 +10,7 @@ export const CartReducer = (state: any, action: any): any => {
   const { payload, type } = action;
   switch (type) {
     case "AddItem":
-      return { ...state, cartItem: payload.newItem };
+      return { ...state, cartItem: payload.newItem ,quantity: payload.newQuantity };
     default:
       return { ...state };
   }

@@ -5,7 +5,7 @@ import { CartContext } from "../components/context/CartContext";
 
 function MountainNavbar() {
   const { cartState } = useContext<any>(CartContext);
-  console.log("length:", cartState.cartItem.length);
+  console.log(cartState.quantity)
   return (
     <>
       <nav className="navbar navbar-expand-lg bg-light mountainNavbar">
@@ -37,7 +37,7 @@ function MountainNavbar() {
               </li>
             </ul>
             <div className="rightIcons">
-              <span>已加入購物車 : {cartState.cartItem.length}</span>
+              <span>已加入購物車 : {cartState.quantity}</span>
               <span> XXX 登入</span>
               <div className="rightIcons_img">
                 <img src="/imgs/cat.png" alt="" />

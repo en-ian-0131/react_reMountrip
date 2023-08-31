@@ -1,7 +1,7 @@
-import { useState, useEffect, useCallback, useContext } from "react";
+import { useState, useEffect, useCallback } from "react";
 import axios from "axios";
 import TrailsProductCount from "../components/TrailsProductCount";
-import { CartContext } from "../components/context/CartContext";
+
 
 interface FetchData {
   sid: number;
@@ -17,12 +17,11 @@ interface FetchData {
 
 function TrailsProducts() {
   const [data, setData] = useState<FetchData[]>([]);
-  const { addItem } = useContext<any>(CartContext);
 
   const getBackend = useCallback(async () => {
     try {
       const responseData = await axios.get(
-        "http://localhost:3002/trails_Limit6"
+        "http://localhost:3002/trails_Limit8"
       );
       // console.log(responseData.data)
       setData(responseData.data);
@@ -50,10 +49,7 @@ function TrailsProducts() {
               </div>
               <p className="tailsProduct_secondChild">$ {v.price}</p>
               <div className="trailCount">
-                <TrailsProductCount />
-                <button onClick={()=>{
-                  addItem(v)
-                }}>加入購物車</button>
+                <TrailsProductCount v={v}/>
               </div>
             </div>
           );
