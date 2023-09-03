@@ -78,11 +78,15 @@
 .mountainNavbar {
   padding: 20px 0px;
   > div {
-    > div {
+    > .mountainNavbar_ul {
       > ul {
         > li {
           > a {
             font-size: 20px;
+          }
+          > .li_active {
+            font-weight: 700;
+            color: rgb(0, 173, 26);
           }
         }
       }
@@ -105,13 +109,46 @@
     }
   }
 }
+
+//MemberLayout
+.first_section {
+  width: 20%;
+  display: flex;
+  flex-direction: column;
+  > span {
+    font-size: 30px;
+    margin-top: 30px;
+    padding: 5px 10px;
+  }
+  > ul {
+    margin-top: 30px;
+    padding: 0;
+    > .active {
+      border-radius: 10px;
+      background-color: rgb(170, 176, 255);
+    }
+    > li {
+      font-size: 20px;
+      padding: 10px;
+      list-style: none;
+    }
+  }
+  > .first_section_img {
+    width: 200px;
+    border-radius: 20px;
+    overflow: hidden;
+    > img {
+      width: 100%;
+    }
+  }
+}
 //Member
 .mountainMember {
   > div {
     display: flex;
     > .first_section {
       width: 20%;
-      display: flex;
+      // display: flex;
       flex-direction: column;
       > span {
         font-size: 30px;
@@ -142,13 +179,14 @@
     }
     > .second_seciton {
       width: 100%;
+      padding-left: 50px;
       > div {
         display: flex;
         margin: 10px;
         width: 100%;
         margin-bottom: 30px;
         > div {
-          margin-left: 15px;
+          width: 100%;
           > label {
             font-size: 20px;
           }
@@ -162,6 +200,31 @@
   }
   > h2 {
     margin: 30px 0px;
+  }
+}
+//Member coupon
+.mountainCoupon {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 50px;
+  > table {
+    > thead {
+      > tr {
+        > th {
+          text-align: center;
+          padding: 15px 0px;
+        }
+      }
+    }
+    > tbody {
+      > tr {
+        > td {
+          text-align: center;
+          padding: 15px 0px;
+        }
+      }
+    }
   }
 }
 

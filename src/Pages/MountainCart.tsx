@@ -4,7 +4,7 @@ function MountainCart() {
   const [count, setCount] = useState(0);
   return (
     <div className="mountainCart">
-      <h2>MountainCart</h2>
+      <h2>Shopping Cart</h2>
       <div className="mountainCart_sections">
         <table className="table table-striped">
           <thead>

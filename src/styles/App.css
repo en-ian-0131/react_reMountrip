@@ -68,8 +68,12 @@
 .mountainNavbar {
   padding: 20px 0px;
 }
-.mountainNavbar > div > div > ul > li > a {
+.mountainNavbar > div > .mountainNavbar_ul > ul > li > a {
   font-size: 20px;
+}
+.mountainNavbar > div > .mountainNavbar_ul > ul > li > .li_active {
+  font-weight: 700;
+  color: rgb(0, 173, 26);
 }
 
 .rightIcons {
@@ -89,12 +93,43 @@
   width: 100%;
 }
 
+.first_section {
+  width: 20%;
+  display: flex;
+  flex-direction: column;
+}
+.first_section > span {
+  font-size: 30px;
+  margin-top: 30px;
+  padding: 5px 10px;
+}
+.first_section > ul {
+  margin-top: 30px;
+  padding: 0;
+}
+.first_section > ul > .active {
+  border-radius: 10px;
+  background-color: rgb(170, 176, 255);
+}
+.first_section > ul > li {
+  font-size: 20px;
+  padding: 10px;
+  list-style: none;
+}
+.first_section > .first_section_img {
+  width: 200px;
+  border-radius: 20px;
+  overflow: hidden;
+}
+.first_section > .first_section_img > img {
+  width: 100%;
+}
+
 .mountainMember > div {
   display: flex;
 }
 .mountainMember > div > .first_section {
   width: 20%;
-  display: flex;
   flex-direction: column;
 }
 .mountainMember > div > .first_section > span {
@@ -125,6 +160,7 @@
 }
 .mountainMember > div > .second_seciton {
   width: 100%;
+  padding-left: 50px;
 }
 .mountainMember > div > .second_seciton > div {
   display: flex;
@@ -133,7 +169,7 @@
   margin-bottom: 30px;
 }
 .mountainMember > div > .second_seciton > div > div {
-  margin-left: 15px;
+  width: 100%;
 }
 .mountainMember > div > .second_seciton > div > div > label {
   font-size: 20px;
@@ -144,6 +180,21 @@
 }
 .mountainMember > h2 {
   margin: 30px 0px;
+}
+
+.mountainCoupon {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 50px;
+}
+.mountainCoupon > table > thead > tr > th {
+  text-align: center;
+  padding: 15px 0px;
+}
+.mountainCoupon > table > tbody > tr > td {
+  text-align: center;
+  padding: 15px 0px;
 }
 
 .mountainCart .mountainCart_sections {

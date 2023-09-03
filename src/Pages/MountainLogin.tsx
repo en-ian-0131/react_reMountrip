@@ -15,7 +15,7 @@ function MountainLogin() {
   return (
     <>
       <div className="mountainLogin">
-        <h2 className="mountainLogin_h2">登入頁面</h2>
+        <h2 className="mountainLogin_h2">Login</h2>
         <form
           method="post"
           className="mountainLoginForm"

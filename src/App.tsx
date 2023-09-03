@@ -14,6 +14,11 @@ import {
   Route,
 } from "react-router-dom";
 import { CartProvider } from "./components/context/CartContext";
+import MemberCoupon from "./components/member/MemberCoupon";
+import MemberFavorite from "./components/member/MemberFavorite";
+import MemberHistory from "./components/member/MemberHistory";
+import MemberAchievement from "./components/member/MemberAchievement";
+import MemberLayout from "./components/member/MemberLayout";
 
 function App() {
   const MounTripRouter = createBrowserRouter(
@@ -21,9 +26,20 @@ function App() {
       <Route path="/" element={<MountainNavbar />}>
         <Route index element={<MountainMain />} />
         <Route path="/products" element={<TrailsProducts />}></Route>
-        <Route path="/login" element={<MountainLogin />}></Route>
-        <Route path="/member" element={<MountainMember />}></Route>
-        <Route path="/cart" element={<MountainCart />}></Route>
+        <Route path="/Login" element={<MountainLogin />}></Route>
+        <Route path="/member" element={<MemberLayout />}>
+          <Route index element={<MountainMember />} />
+          {/* <Route path=":page" element={<MountainMember />} 
+          loader={(params)=>{
+            console.log("123:",params)
+            return params
+          }}/> */}
+          <Route path="coupon" element={<MemberCoupon />} />
+          <Route path="favorite" element={<MemberFavorite />} />
+          <Route path="history" element={<MemberHistory />} />
+          <Route path="achieve" element={<MemberAchievement />} />
+        </Route>
+        <Route path="/Cart" element={<MountainCart />}></Route>
       </Route>
     )
   );

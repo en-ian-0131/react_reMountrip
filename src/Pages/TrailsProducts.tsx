@@ -2,7 +2,6 @@ import { useState, useEffect, useCallback } from "react";
 import axios from "axios";
 import TrailsProductCount from "../components/TrailsProductCount";
 
-
 interface FetchData {
   sid: number;
   trail_name: string;
@@ -12,12 +11,8 @@ interface FetchData {
   geo_location_town_sid: string;
 }
 
-
-
-
 function TrailsProducts() {
   const [data, setData] = useState<FetchData[]>([]);
-
   const getBackend = useCallback(async () => {
     try {
       const responseData = await axios.get(
@@ -36,7 +31,7 @@ function TrailsProducts() {
 
   return (
     <>
-      <h2>TrailsProducts</h2>
+      <h2>Products</h2>
       <div className="trailsProducts">
         {data.map((v) => {
           return (
@@ -49,7 +44,7 @@ function TrailsProducts() {
               </div>
               <p className="tailsProduct_secondChild">$ {v.price}</p>
               <div className="trailCount">
-                <TrailsProductCount v={v}/>
+                <TrailsProductCount v={v} />
               </div>
             </div>
           );
