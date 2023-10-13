@@ -1,5 +1,7 @@
 import { useState, useCallback, useEffect, Fragment } from "react";
 import axios from "axios";
+import { MemberDetail } from "../components/interface/MountripInterface";
+
 
 function MountainMember() {
   const [memberData, setMemberData] = useState([]);
@@ -7,20 +9,19 @@ function MountainMember() {
   const getMemberData = useCallback(async () => {
     try {
       const res = await axios.get("http://localhost:3002/member_Limit1");
-      // console.log(res.data);
       setMemberData(res.data);
     } catch (err) {
       console.log(err);
     }
   }, []);
+  
   useEffect(() => {
-    console.log("re-render");
     getMemberData();
   }, []);
   return (
     <>
       <section className="second_seciton">
-        {memberData.map((row: any, i) => {
+        {memberData.map((row: MemberDetail, i) => {
           return (
             <Fragment key={`${i}+${row.email}`}>
               <div>

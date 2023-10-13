@@ -17,7 +17,7 @@ function MemberCoupon() {
 
   const getCounponData = async () => {
     try {
-      const res = await axios("http://localhost:3002/coupon_limit1");
+      const res = await axios("http://localhost:3002/coupon_limit5");
       const data = res.data;
       setMyCoupon(data);
     } catch (err) {

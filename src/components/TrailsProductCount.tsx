@@ -1,7 +1,8 @@
 import { useState, useContext } from "react";
 import { CartContext } from "../components/context/CartContext";
+import { FetchData } from "./interface/MountripInterface";
 
-function TrailsProductCount({ v }: any) {
+function TrailsProductCount({ v }: { v: FetchData }) {
   const [count, setCount] = useState(1);
   const { addItem } = useContext<any>(CartContext);
   return (
@@ -31,7 +32,7 @@ function TrailsProductCount({ v }: any) {
       <button
         onClick={() => {
           addItem(v, count);
-          alert(`${v.trail_name} 已加入購物車`)
+          alert(`${v.trail_name} 已加入購物車`);
         }}
       >
         加入購物車

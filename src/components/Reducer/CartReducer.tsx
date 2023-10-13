@@ -1,16 +1,23 @@
-export const initialization: object = {
+import {
+  CartInitialType,
+  CartAction,
+  ProviderValue,
+} from "../interface/MountripInterface";
+
+export const initialization: CartInitialType = {
   cartItem: [],
-  quantity:0
+  quantity: 0,
 };
 
-export const CartReducer = (state: any, action: any): any => {
-  console.log("ReducerState:", state);
-  console.log("ReducerAction:", action);
-
+export const CartReducer = (state: ProviderValue, action: CartAction): any => {
   const { payload, type } = action;
   switch (type) {
     case "AddItem":
-      return { ...state, cartItem: payload.newItem ,quantity: payload.newQuantity };
+      return {
+        ...state,
+        cartItem: payload.newItem,
+        quantity: payload.newQuantity,
+      };
     default:
       return { ...state };
   }

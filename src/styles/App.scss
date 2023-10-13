@@ -1,3 +1,8 @@
+// --mtgreen-1: #6cba7c;
+// --mtgreen-2: #8dc996;
+// --mtgreen-3: #add9b1;
+// --mtgreen-4: #cee8cb;
+
 //Products
 .trailsProducts {
   display: flex;
@@ -25,7 +30,7 @@
         size: 20px;
         weight: 700;
       }
-      color: green;
+      color: #6cba7c;
     }
     > .tailsProduct_secondChild {
       font-size: 18px;
@@ -86,7 +91,7 @@
           }
           > .li_active {
             font-weight: 700;
-            color: rgb(0, 173, 26);
+            color: #6cba7c;
           }
         }
       }
@@ -100,7 +105,14 @@
     font-size: 20px;
     margin-right: 15px;
   }
+  > button {
+    border: none;
+    border-radius: 7px;
+    padding: 7px 10px;
+    background-color: #cee8cb;
+  }
   > .rightIcons_img {
+    margin-left: 20px;
     width: 60px;
     border-radius: 50%;
     overflow: hidden;
@@ -125,7 +137,7 @@
     padding: 0;
     > .active {
       border-radius: 10px;
-      background-color: rgb(170, 176, 255);
+      background-color: #6cba7c;
     }
     > li {
       font-size: 20px;
@@ -160,7 +172,7 @@
         padding: 0;
         > .active {
           border-radius: 10px;
-          background-color: rgb(170, 176, 255);
+          background-color: #add9b1;
         }
         > li {
           font-size: 20px;

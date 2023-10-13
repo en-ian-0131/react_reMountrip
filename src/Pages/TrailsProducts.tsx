@@ -1,15 +1,7 @@
 import { useState, useEffect, useCallback } from "react";
 import axios from "axios";
 import TrailsProductCount from "../components/TrailsProductCount";
-
-interface FetchData {
-  sid: number;
-  trail_name: string;
-  trail_img: string;
-  price: number;
-  geo_location_sid: string;
-  geo_location_town_sid: string;
-}
+import { FetchData } from "../components/interface/MountripInterface";
 
 function TrailsProducts() {
   const [data, setData] = useState<FetchData[]>([]);
@@ -18,7 +10,6 @@ function TrailsProducts() {
       const responseData = await axios.get(
         "http://localhost:3002/trails_Limit8"
       );
-      // console.log(responseData.data)
       setData(responseData.data);
     } catch (err) {
       console.log(err);

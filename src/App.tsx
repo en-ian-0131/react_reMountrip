@@ -19,6 +19,7 @@ import MemberFavorite from "./components/member/MemberFavorite";
 import MemberHistory from "./components/member/MemberHistory";
 import MemberAchievement from "./components/member/MemberAchievement";
 import MemberLayout from "./components/member/MemberLayout";
+import { LoginProvider } from "./components/context/LoginContext";
 
 function App() {
   const MounTripRouter = createBrowserRouter(
@@ -47,7 +48,9 @@ function App() {
   return (
     <div className="container">
       <CartProvider>
-        <RouterProvider router={MounTripRouter} />
+        <LoginProvider>
+          <RouterProvider router={MounTripRouter} />
+        </LoginProvider>
       </CartProvider>
     </div>
   );
