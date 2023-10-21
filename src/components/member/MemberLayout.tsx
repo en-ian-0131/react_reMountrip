@@ -1,11 +1,9 @@
-import React, { useRef, useState,useContext } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useNavigate, Outlet } from "react-router-dom";
-import { LoginContext } from "../context/LoginContext";
 
 function MemberLayout() {
   const [t0, setT0] = useState<number>(0);
   const navigate = useNavigate();
-  const { LoginResponse } = useContext(LoginContext);
   const sectionClick: React.MutableRefObject<string> = useRef("會員");
 
   const firstSection = [
@@ -14,6 +12,11 @@ function MemberLayout() {
     { key: "history", name: "歷史訂單" },
     { key: "achieve", name: "成就" },
   ];
+
+  useEffect(() => {
+    navigate("/member");
+  }, []);
+
   return (
     <div className="mountainMember">
       <h2>Member</h2>
@@ -22,7 +25,11 @@ function MemberLayout() {
           <div className="first_section_img">
             <img src="/imgs/cat.png" alt="" />
           </div>
-          <span> {LoginResponse.admins.account} </span>
+          <span>
+            {localStorage.getItem("account")
+              ? localStorage.getItem("account")
+              : ""}
+          </span>
 
           <ul>
             <li

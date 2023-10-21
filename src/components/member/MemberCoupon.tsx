@@ -29,24 +29,20 @@ function MemberCoupon() {
     getCounponData();
   }, []);
 
-  const transFormName: (coupon_status: number) => React.ReactNode = (
-    coupon_status
-  ) => {
+  const transFormName = (coupon_status: number) => {
     switch (coupon_status) {
       case 1:
-        return "未使用";
+        return <td className="notYetUsed">未使用</td>;
       case 2:
-        return "已使用";
+        return <td className="haveUsed">已使用</td>;
       case 3:
-        return "快過期";
+        return <td className="expirationSoon">快過期</td>;
       default:
-        return "已過期";
+        return <td className="expired">已過期</td>;
     }
   };
-  const transFormTimestamp: (timestamp: string) => React.ReactNode = (
-    timestamp
-  ) => {
-    return moment(parseInt(timestamp)).format("YYYY-MM-DD");
+  const transFormTimestamp = (timestamp: string) => {
+    return timestamp.slice(0, 10);
   };
 
   return (
@@ -56,10 +52,10 @@ function MemberCoupon() {
         <thead>
           <tr>
             <th>代號</th>
-            <th>名稱</th>
+            <th className="col-4">名稱</th>
             <th>折數</th>
             <th>使用時間</th>
-            <th>狀態</th>
+            <th className="col-2">狀態</th>
           </tr>
         </thead>
         <tbody>
@@ -70,9 +66,11 @@ function MemberCoupon() {
                 <td>{v.coupon_name}</td>
                 <td>{v.coupon_rate}折</td>
                 <td>
-                  {v.start_date_coup} -{v.end_date_coup}
+                  {`${transFormTimestamp(
+                    v.start_date_coup
+                  )} - ${transFormTimestamp(v.end_date_coup)}`}
                 </td>
-                <td>{transFormName(v.coupon_status)}</td>
+                {transFormName(v.coupon_status)}
               </tr>
             );
           })}

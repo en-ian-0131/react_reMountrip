@@ -5,7 +5,7 @@ import { FetchData } from "../components/interface/MountripInterface";
 
 function TrailsProducts() {
   const [data, setData] = useState<FetchData[]>([]);
-  const getBackend = useCallback(async () => {
+  const getPoductsData = useCallback(async () => {
     try {
       const responseData = await axios.get(
         "http://localhost:3002/trails_Limit8"
@@ -16,8 +16,19 @@ function TrailsProducts() {
     }
   }, []);
 
+  const getLikeApi = async (trail_name: string) => {
+    try {
+      const Like = await axios.get("http://localhost:3002/like", {
+        params: { body: trail_name },
+      });
+      console.log("Like:", Like);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   useEffect(() => {
-    getBackend();
+    getPoductsData();
   }, []);
 
   return (
@@ -27,6 +38,20 @@ function TrailsProducts() {
         {data.map((v) => {
           return (
             <div className="trailsProduct" key={v.sid}>
+              <i
+                className="fa-regular fa-heart heart"
+                onClick={() => {
+                  getLikeApi(v.trail_name);
+                  console.log(v.trail_name);
+                }}
+              ></i>
+              <i
+                className="fa-regular fa-heart haveHeart"
+                onClick={() => {
+                  getLikeApi(v.trail_name);
+                  console.log(v.trail_name);
+                }}
+              ></i>
               <img src={`/imgs/${v.trail_img}`} alt="" />
               <p className="tailsProduct_firstChild">{v.trail_name}</p>
               <div>

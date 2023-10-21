@@ -9,6 +9,7 @@
   flex-wrap: wrap;
   justify-content: space-around;
   > .trailsProduct {
+    position: relative;
     display: flex;
     flex-direction: column;
     width: 20%;
@@ -17,6 +18,23 @@
     padding: 15px;
     margin: 10px;
     border-radius: 20px;
+    > i.heart {
+      position: absolute;
+      top: 35px;
+      left: 200px;
+      color: #fff;
+      font-size: 30px;
+      font-weight: 500;
+    }
+    > i.haveHeart {
+      position: absolute;
+      top: 38px;
+      // top: 50px;
+      left: 203px;
+      color: red;
+      font-size: 24px;
+      font-weight: 600;
+    }
     > p {
       margin-bottom: 0;
     }
@@ -234,6 +252,42 @@
         > td {
           text-align: center;
           padding: 15px 0px;
+          .notYetUsed {
+            color: #6cba7c;
+          }
+          .haveUsed {
+            color: black;
+          }
+          .expirationSoon {
+            color: orange;
+          }
+          .expired {
+            color: rgb(255, 100, 100);
+          }
+        }
+        > td.notYetUsed {
+          text-align: center;
+          font-weight: 700;
+          padding: 15px 0px;
+          color: #6cba7c;
+        }
+        > td.haveUsed {
+          text-align: center;
+          font-weight: 700;
+          padding: 15px 0px;
+          color: black;
+        }
+        > td.expirationSoon {
+          text-align: center;
+          font-weight: 700;
+          padding: 15px 0px;
+          color: orange;
+        }
+        > td.expired {
+          text-align: center;
+          font-weight: 700;
+          padding: 15px 0px;
+          color: rgb(255, 100, 100);
         }
       }
     }

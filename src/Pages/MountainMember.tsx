@@ -2,7 +2,6 @@ import { useState, useCallback, useEffect, Fragment } from "react";
 import axios from "axios";
 import { MemberDetail } from "../components/interface/MountripInterface";
 
-
 function MountainMember() {
   const [memberData, setMemberData] = useState([]);
 
@@ -14,10 +13,26 @@ function MountainMember() {
       console.log(err);
     }
   }, []);
-  
+
+  const transformSex = (type: string) => {
+    switch (type) {
+      case "male":
+        return "男";
+      case "female":
+        return "女";
+      default:
+        return "";
+    }
+  };
+
+  const transformDate = (date: string) => {
+    return date.slice(0, 10);
+  };
+
   useEffect(() => {
     getMemberData();
   }, []);
+
   return (
     <>
       <section className="second_seciton">
@@ -40,12 +55,12 @@ function MountainMember() {
               </div>
               <div>
                 <div>
-                  <label htmlFor="">性別 : {row.gender}</label>
+                  <label htmlFor="">性別 : {transformSex(row.gender)}</label>
                   {/* <input type="text" /> */}
                 </div>
 
                 <div>
-                  <label htmlFor="">生日 : {row.birthday}</label>
+                  <label htmlFor="">生日 : {transformDate(row.birthday)}</label>
                   {/* <input type="text" /> */}
                 </div>
                 <div>
