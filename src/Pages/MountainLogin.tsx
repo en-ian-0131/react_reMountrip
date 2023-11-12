@@ -43,6 +43,7 @@ function MountainLogin() {
       const r = await res.json();
       console.log(r);
       setLoginResponse(r)
+      localStorage.setItem("sid", r.admins.sid);
       localStorage.setItem("account", r.admins.account);
       localStorage.setItem("nickname", r.admins.nickname);
       localStorage.setItem("success", r.success);

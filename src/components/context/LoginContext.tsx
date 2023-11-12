@@ -1,5 +1,4 @@
 import { ReactNode, createContext, useState } from "react";
-import { LoginData } from "../interface/MountripInterface";
 
 // export interface Init {
 //   myAccount: string;

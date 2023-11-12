@@ -51,3 +51,10 @@ export interface MemberDetail {
   email: string;
   mobile: string;
 }
+
+//Member favorite
+export interface MemberFavoriteInterface {
+  sid: number;
+  trail_name: string;
+  status: number;
+}

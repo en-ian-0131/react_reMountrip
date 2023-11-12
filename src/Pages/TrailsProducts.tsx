@@ -2,9 +2,11 @@ import { useState, useEffect, useCallback } from "react";
 import axios from "axios";
 import TrailsProductCount from "../components/TrailsProductCount";
 import { FetchData } from "../components/interface/MountripInterface";
+import TrailsFavorite from "../components/Trails/TrailsFavorite";
 
 function TrailsProducts() {
   const [data, setData] = useState<FetchData[]>([]);
+  const [favorite, setFavorite] = useState<number>(0);
   const getPoductsData = useCallback(async () => {
     try {
       const responseData = await axios.get(
@@ -15,17 +17,6 @@ function TrailsProducts() {
       console.log(err);
     }
   }, []);
-
-  const getLikeApi = async (trail_name: string) => {
-    try {
-      const Like = await axios.get("http://localhost:3002/like", {
-        params: { body: trail_name },
-      });
-      console.log("Like:", Like);
-    } catch (err) {
-      console.log(err);
-    }
-  };
 
   useEffect(() => {
     getPoductsData();
@@ -38,20 +29,8 @@ function TrailsProducts() {
         {data.map((v) => {
           return (
             <div className="trailsProduct" key={v.sid}>
-              <i
-                className="fa-regular fa-heart heart"
-                onClick={() => {
-                  getLikeApi(v.trail_name);
-                  console.log(v.trail_name);
-                }}
-              ></i>
-              <i
-                className="fa-regular fa-heart haveHeart"
-                onClick={() => {
-                  getLikeApi(v.trail_name);
-                  console.log(v.trail_name);
-                }}
-              ></i>
+              <TrailsFavorite row={v.sid}/>
+
               <img src={`/imgs/${v.trail_img}`} alt="" />
               <p className="tailsProduct_firstChild">{v.trail_name}</p>
               <div>

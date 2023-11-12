@@ -9,7 +9,6 @@
   flex-wrap: wrap;
   justify-content: space-around;
   > .trailsProduct {
-    position: relative;
     display: flex;
     flex-direction: column;
     width: 20%;
@@ -17,31 +16,15 @@
     border: 2px solid gray;
     padding: 15px;
     margin: 10px;
-    border-radius: 20px;
-    > i.heart {
-      position: absolute;
-      top: 35px;
-      left: 200px;
-      color: #fff;
-      font-size: 30px;
-      font-weight: 500;
-    }
-    > i.haveHeart {
-      position: absolute;
-      top: 38px;
-      // top: 50px;
-      left: 203px;
-      color: red;
-      font-size: 24px;
-      font-weight: 600;
-    }
+    border-radius: 12px;
+
     > p {
       margin-bottom: 0;
     }
     > img {
       width: 100%;
       height: 150px;
-      border-radius: 20px;
+      border-radius: 7px;
     }
     > .tailsProduct_firstChild {
       font: {
@@ -76,6 +59,25 @@
     }
   }
 }
+
+//favorite component
+div.favoriteComponent {
+  position: relative;
+  > i.heart {
+    color: black;
+    font-size: 30px;
+    font-weight: 500;
+  }
+  > i.haveHeart {
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    color: red;
+    font-size: 24px;
+    font-weight: 600;
+  }
+}
+
 //Login
 .mountainLogin {
   > .mountainLogin_h2 {
