@@ -15,6 +15,7 @@ function MountainNavbar() {
     "products",
     "member",
     "Cart",
+    "Test",
   ];
 
   return (

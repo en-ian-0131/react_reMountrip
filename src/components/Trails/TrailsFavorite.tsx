@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import  { useEffect, useState } from "react";
 import { FetchData } from "../interface/MountripInterface";
 
 export default function TrailsFavorite(props: { row: number }) {
@@ -44,8 +44,6 @@ export default function TrailsFavorite(props: { row: number }) {
   }, []);
 
   const saveLikeApi = async () => {
-    console.log("forFavoriteData:", forFavoriteData);
-
     try {
       const Like = await axios.get("http://localhost:3002/saveLike", {
         params: forFavoriteData,
@@ -95,7 +93,7 @@ export default function TrailsFavorite(props: { row: number }) {
         </div>
       ) : (
         <div className="favoriteComponent">
-          {/* <i
+          <i
             className="fa-regular fa-heart heart"
             onClick={() => {
               setForFavoriteData({
@@ -105,7 +103,7 @@ export default function TrailsFavorite(props: { row: number }) {
               });
               setControlLike(new Date().getTime());
             }}
-          ></i> */}
+          ></i>
         </div>
       )}
     </>

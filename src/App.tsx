@@ -20,6 +20,7 @@ import MemberHistory from "./components/member/MemberHistory";
 import MemberAchievement from "./components/member/MemberAchievement";
 import MemberLayout from "./components/member/MemberLayout";
 import { LoginProvider } from "./components/context/LoginContext";
+import TestIan from "./Pages/TestIan";
 
 function App() {
   const MounTripRouter = createBrowserRouter(
@@ -28,6 +29,7 @@ function App() {
         <Route index element={<MountainMain />} />
         <Route path="/products" element={<TrailsProducts />}></Route>
         <Route path="/Login" element={<MountainLogin />}></Route>
+        <Route path="/test" element={<TestIan />}></Route>
         <Route path="/member" element={<MemberLayout />}>
           <Route index element={<MountainMember />} />
           {/* <Route path=":page" element={<MountainMember />} 
