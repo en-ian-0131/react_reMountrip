@@ -1,3 +1,7 @@
+.cousorPoint {
+  cursor: pointer;
+}
+
 .trailsProducts {
   display: flex;
   flex-wrap: wrap;
@@ -299,4 +303,4 @@ div.favoriteComponent > i.haveHeart {
 }
 .mountainCart .mountainCart_sections > section > .mountainCart_coupon > input {
   margin-left: 15px;
-}/*# sourceMappingURL=App.css.map */
+} /*# sourceMappingURL=App.css.map */

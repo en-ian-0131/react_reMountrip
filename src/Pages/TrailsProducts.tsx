@@ -26,10 +26,10 @@ function TrailsProducts() {
     <>
       <h2>Products</h2>
       <div className="trailsProducts">
-        {data.map((v) => {
+        {data.map((v, index) => {
           return (
-            <div className="trailsProduct" key={v.sid}>
-              <TrailsFavorite row={v.sid}/>
+            <div className="trailsProduct" key={`${v.sid}-${index}`}>
+              <TrailsFavorite row={v.sid} />
 
               <img src={`/imgs/${v.trail_img}`} alt="" />
               <p className="tailsProduct_firstChild">{v.trail_name}</p>

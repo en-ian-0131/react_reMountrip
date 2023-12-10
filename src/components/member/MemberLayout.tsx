@@ -33,7 +33,11 @@ function MemberLayout() {
 
           <ul>
             <li
-              className={sectionClick.current === "會員" ? "active" : ""}
+              className={
+                sectionClick.current === "會員"
+                  ? "active cousorPoint"
+                  : "cousorPoint"
+              }
               onClick={() => {
                 navigate("/member");
                 sectionClick.current = "會員";
@@ -45,8 +49,12 @@ function MemberLayout() {
             {firstSection.map((v, i) => {
               return (
                 <li
-                  key={i}
-                  className={v.name === sectionClick.current ? "active" : ""}
+                  key={`${v}+${i}`}
+                  className={
+                    v.name === sectionClick.current
+                      ? "active cousorPoint"
+                      : "cousorPoint"
+                  }
                   onClick={() => {
                     sectionClick.current = v.name;
                     navigate(`/member/${v.key}`);

@@ -61,7 +61,7 @@ function MemberCoupon() {
         <tbody>
           {myCoupon.map((v, i) => {
             return (
-              <tr key={`${v}+${i + 1}`}>
+              <tr key={`${v}+${i}`}>
                 <td>{v.coupon_code}</td>
                 <td>{v.coupon_name}</td>
                 <td>{v.coupon_rate}折</td>
