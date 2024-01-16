@@ -2,6 +2,7 @@ import { useState, useCallback, useEffect, Fragment, useContext } from "react";
 import axios from "axios";
 import { MemberDetail } from "../components/interface/MountripInterface";
 import { LoginContext } from "../components/context/LoginContext";
+import { User } from "./MountainLogin";
 
 function MountainMember() {
   const [memberData, setMemberData] = useState([]);
@@ -11,14 +12,14 @@ function MountainMember() {
     try {
       const res = await axios.get("http://localhost:3002/member", {
         params: {
-          account: loginUserData.account,
+          account: User(),
         },
       });
       setMemberData(res.data);
     } catch (err) {
       console.log(err);
     }
-  }, [loginUserData.account]);
+  }, [User()]);
 
   const transformSex = (type: string) => {
     switch (type) {
@@ -36,8 +37,8 @@ function MountainMember() {
   };
 
   useEffect(() => {
-    if (loginUserData.account !== "") getMemberData();
-  }, [loginUserData.account]);
+    if (User() !== "") getMemberData();
+  }, [User()]);
 
   return (
     <>

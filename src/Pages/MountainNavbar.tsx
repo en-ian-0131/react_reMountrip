@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { Outlet } from "react-router-dom";
 import { CartContext } from "../components/context/CartContext";
 import { LoginContext } from "../components/context/LoginContext";
+import { User } from "./MountainLogin";
 
 function MountainNavbar() {
   const { cartState } = useContext<any>(CartContext);
@@ -41,7 +42,7 @@ function MountainNavbar() {
                       ) {
                         setCheck_li(v);
                       } else {
-                        if (loginUserData.account) {
+                        if (User()) {
                           setCheck_li(v);
                         } else {
                           alert("請先登入~");
@@ -57,7 +58,7 @@ function MountainNavbar() {
                         check_li === v ? "nav-link li_active" : "nav-link"
                       }
                     >
-                      {loginUserData.account && v === "Login" ? "" : v}
+                      {User() && v === "Login" ? "" : v}
                     </Link>
                   </li>
                 );
@@ -69,14 +70,18 @@ function MountainNavbar() {
               <span>
                 {`${
                   loginUserData.nickName !== "" ? loginUserData.nickName : ""
-                } ${loginUserData.account !== "" ? loginUserData.account : ""}`}
+                } ${User() !== undefined ? User() : ""}`}
               </span>
 
-              {loginUserData.account !== "" ? (
+              {User() !== undefined ? (
                 <button
                   onClick={() => {
                     navigate("/");
                     setCheck_li("MounTrip");
+                    document.cookie = `sid=; expires=${new Date(0)}`;
+                    document.cookie = `account=; expires=${new Date(0)}`;
+                    document.cookie = `nickname=; expires=${new Date(0)}`;
+                    document.cookie = `success=; expires=${new Date(0)}`;
                     setLoginUserData({
                       sid: 0,
                       success: false,

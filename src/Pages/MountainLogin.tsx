@@ -3,6 +3,16 @@ import { LoginContext } from "../components/context/LoginContext";
 import { useNavigate } from "react-router-dom";
 import { LoginData } from "../components/interface/MountripInterface";
 
+export function User() {
+  const userName = document.cookie
+    .split(";")
+    .map((row) => row.trim())
+    .find((row) => row.startsWith("account="));
+  if (userName !== undefined) {
+    return userName.split("=")[1];
+  }
+}
+
 function MountainLogin() {
   const { setCheck_li, setLoginUserData }: any = useContext(LoginContext);
   const [myAccount, setMyAccount] = useState<string>("");
@@ -49,6 +59,14 @@ function MountainLogin() {
         account: r.admins.account,
         nickName: r.admins.nickname,
       });
+      document.cookie = `sid=${r.admins.sid}`;
+      document.cookie = `account=${r.admins.account}`;
+      document.cookie = `nickname=${r.admins.nickname}`;
+      document.cookie = `success=${r.success}`;
+      // localStorage.setItem("sid", r.admins.sid);
+      // localStorage.setItem("account", r.admins.account);
+      // localStorage.setItem("nickname", r.admins.nickname);
+      // localStorage.setItem("success", r.success);
       setTimeout(() => {
         navigate("/products");
         setCheck_li("products");
