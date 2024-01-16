@@ -44,7 +44,7 @@ function MemberFavorite() {
                 <td>{v.sid}</td>
                 <td>{v.trail_name}</td>
                 <td>
-                  {/* <TrailsFavorite row={v.sid} /> */}{v.status}
+                  <TrailsFavorite row={v.sid} />
                 </td>
               </tr>
             );

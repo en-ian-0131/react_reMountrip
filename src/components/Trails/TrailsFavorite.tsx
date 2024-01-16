@@ -1,6 +1,8 @@
 import axios from "axios";
-import  { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { FetchData } from "../interface/MountripInterface";
+import FavoriteIcon from "@mui/icons-material/Favorite";
+import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 
 export default function TrailsFavorite(props: { row: number }) {
   const { row } = props;
@@ -64,12 +66,13 @@ export default function TrailsFavorite(props: { row: number }) {
     };
   }, [controlLike]);
 
+
   return (
     <>
       {!Boolean(forFavoriteData.favoriteState) ? (
-        <div className="favoriteComponent">
-          <i
-            className="fa-regular fa-heart heart"
+        <div className="trailsHearts">
+          <FavoriteIcon
+            style={{ color: "red", fontSize: "30px" }}
             onClick={() => {
               setForFavoriteData({
                 ...forFavoriteData,
@@ -78,23 +81,12 @@ export default function TrailsFavorite(props: { row: number }) {
               });
               setControlLike(new Date().getTime());
             }}
-          ></i>
-          <i
-            className="fa-regular fa-heart haveHeart"
-            onClick={() => {
-              setForFavoriteData({
-                ...forFavoriteData,
-                trailSid: row,
-                favoriteState: 1,
-              });
-              setControlLike(new Date().getTime());
-            }}
-          ></i>
+          />
         </div>
       ) : (
-        <div className="favoriteComponent">
-          <i
-            className="fa-regular fa-heart heart"
+        <div className="trailsHearts">
+          <FavoriteBorderIcon
+            style={{ fontSize: "30px" }}
             onClick={() => {
               setForFavoriteData({
                 ...forFavoriteData,
@@ -103,7 +95,7 @@ export default function TrailsFavorite(props: { row: number }) {
               });
               setControlLike(new Date().getTime());
             }}
-          ></i>
+          />
         </div>
       )}
     </>
