@@ -6,7 +6,8 @@ import { LoginContext } from "../components/context/LoginContext";
 
 function MountainNavbar() {
   const { cartState } = useContext<any>(CartContext);
-  const { setLoginResponse, check_li, setCheck_li } = useContext(LoginContext);
+  const { loginUserData, check_li, setCheck_li, setLoginUserData } =
+    useContext(LoginContext);
   const navigate = useNavigate();
 
   const ul_Content: string[] = [
@@ -40,7 +41,7 @@ function MountainNavbar() {
                       ) {
                         setCheck_li(v);
                       } else {
-                        if (localStorage.getItem("account")) {
+                        if (loginUserData.account) {
                           setCheck_li(v);
                         } else {
                           alert("請先登入~");
@@ -56,9 +57,7 @@ function MountainNavbar() {
                         check_li === v ? "nav-link li_active" : "nav-link"
                       }
                     >
-                      {localStorage.getItem("account") && v === "Login"
-                        ? ""
-                        : v}
+                      {loginUserData.account && v === "Login" ? "" : v}
                     </Link>
                   </li>
                 );
@@ -69,24 +68,21 @@ function MountainNavbar() {
 
               <span>
                 {`${
-                  localStorage.getItem("nickname")
-                    ? localStorage.getItem("nickname")
-                    : ""
-                } ${
-                  localStorage.getItem("account")
-                    ? localStorage.getItem("account")
-                    : ""
-                }`}
+                  loginUserData.nickName !== "" ? loginUserData.nickName : ""
+                } ${loginUserData.account !== "" ? loginUserData.account : ""}`}
               </span>
 
-              {localStorage.getItem("account") ? (
+              {loginUserData.account !== "" ? (
                 <button
                   onClick={() => {
-                    localStorage.removeItem("nickname");
-                    localStorage.removeItem("account");
-                    localStorage.removeItem("success");
                     navigate("/");
                     setCheck_li("MounTrip");
+                    setLoginUserData({
+                      sid: 0,
+                      success: false,
+                      account: "",
+                      nickName: "",
+                    });
                   }}
                 >
                   登出

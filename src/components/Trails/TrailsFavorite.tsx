@@ -1,18 +1,20 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { FetchData } from "../interface/MountripInterface";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+import { LoginContext } from "../context/LoginContext";
 
 export default function TrailsFavorite(props: { row: number }) {
   const { row } = props;
   const [controlLike, setControlLike] = useState<number>(0);
+  const { loginUserData }: any = useContext(LoginContext);
   const [forFavoriteData, setForFavoriteData] = useState<{
     memberSid: number;
     trailSid: number;
     favoriteState: number;
   }>({
-    memberSid: Number(localStorage.getItem("sid")),
+    memberSid: loginUserData.sid,
     trailSid: 0,
     favoriteState: 1, // 資料庫1是沒按喜歡  0 是有按喜歡
   });
@@ -23,7 +25,7 @@ export default function TrailsFavorite(props: { row: number }) {
   ) => {
     try {
       const res = await axios.get("http://localhost:3002/getLike", {
-        params: { memberSid: Number(localStorage.getItem("sid")) },
+        params: { memberSid: loginUserData.sid },
       });
       callback(res.data);
     } catch (err) {
@@ -65,7 +67,6 @@ export default function TrailsFavorite(props: { row: number }) {
       setControlLike(0);
     };
   }, [controlLike]);
-
 
   return (
     <>

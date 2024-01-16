@@ -1,19 +1,21 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { MemberFavoriteInterface } from "../interface/MountripInterface";
 import TrailsFavorite from "../Trails/TrailsFavorite";
+import { LoginContext } from "../context/LoginContext";
 
 function MemberFavorite() {
   const [favoriteList, setFavoriteList] = useState<MemberFavoriteInterface[]>(
     []
   );
+  const { loginUserData }: any = useContext(LoginContext);
 
   const getFavoriteApi = async (
     callback: (r: { sid: number; trail_name: string; status: number }[]) => void
   ) => {
     try {
       const res = await axios.get("http://localhost:3002/getlikeData", {
-        params: { memberSid: Number(localStorage.getItem("sid")) },
+        params: { memberSid: Number(loginUserData.sid) },
       });
       callback(res.data);
     } catch (err) {

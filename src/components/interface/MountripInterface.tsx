@@ -52,7 +52,15 @@ export interface MemberDetail {
   mobile: string;
 }
 
-//Member favorite
+//Member --member
+export interface IMemberUserData {
+  sid: number;
+  success: boolean;
+  account: string;
+  nickName: string;
+}
+
+//Member --favorite
 export interface MemberFavoriteInterface {
   sid: number;
   trail_name: string;

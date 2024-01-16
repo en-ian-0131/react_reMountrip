@@ -1,10 +1,12 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import { useNavigate, Outlet } from "react-router-dom";
+import { LoginContext } from "../context/LoginContext";
 
 function MemberLayout() {
   const [t0, setT0] = useState<number>(0);
   const navigate = useNavigate();
   const sectionClick: React.MutableRefObject<string> = useRef("會員");
+  const { loginUserData }: any = useContext(LoginContext);
 
   const firstSection = [
     { key: "coupon", name: "優惠券" },
@@ -26,9 +28,7 @@ function MemberLayout() {
             <img src="/imgs/cat.png" alt="" />
           </div>
           <span>
-            {localStorage.getItem("account")
-              ? localStorage.getItem("account")
-              : ""}
+            {loginUserData.account !== "" ? loginUserData.account : ""}
           </span>
 
           <ul>

@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { LoginData } from "../components/interface/MountripInterface";
 
 function MountainLogin() {
-  const { setCheck_li }: any = useContext(LoginContext);
+  const { setCheck_li, setLoginUserData }: any = useContext(LoginContext);
   const [myAccount, setMyAccount] = useState<string>("");
   const [myPassword, setMyPassword] = useState<string>("");
   const [LoginResponse, setLoginResponse] = useState<LoginData>({
@@ -42,11 +42,13 @@ function MountainLogin() {
       });
       const r = await res.json();
       console.log(r);
-      setLoginResponse(r)
-      localStorage.setItem("sid", r.admins.sid);
-      localStorage.setItem("account", r.admins.account);
-      localStorage.setItem("nickname", r.admins.nickname);
-      localStorage.setItem("success", r.success);
+      setLoginResponse(r);
+      setLoginUserData({
+        sid: r.admins.sid,
+        success: r.success,
+        account: r.admins.account,
+        nickName: r.admins.nickname,
+      });
       setTimeout(() => {
         navigate("/products");
         setCheck_li("products");
