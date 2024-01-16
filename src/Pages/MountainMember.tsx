@@ -1,18 +1,24 @@
-import { useState, useCallback, useEffect, Fragment } from "react";
+import { useState, useCallback, useEffect, Fragment, useContext } from "react";
 import axios from "axios";
 import { MemberDetail } from "../components/interface/MountripInterface";
+import { LoginContext } from "../components/context/LoginContext";
 
 function MountainMember() {
   const [memberData, setMemberData] = useState([]);
+  const { loginUserData } = useContext(LoginContext);
 
   const getMemberData = useCallback(async () => {
     try {
-      const res = await axios.get("http://localhost:3002/member_Limit1");
+      const res = await axios.get("http://localhost:3002/member", {
+        params: {
+          account: loginUserData.account,
+        },
+      });
       setMemberData(res.data);
     } catch (err) {
       console.log(err);
     }
-  }, []);
+  }, [loginUserData.account]);
 
   const transformSex = (type: string) => {
     switch (type) {
@@ -30,8 +36,8 @@ function MountainMember() {
   };
 
   useEffect(() => {
-    getMemberData();
-  }, []);
+    if (loginUserData.account !== "") getMemberData();
+  }, [loginUserData.account]);
 
   return (
     <>
