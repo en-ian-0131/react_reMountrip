@@ -1,6 +1,6 @@
-import { useContext, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { Outlet } from "react-router-dom";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import { useContext } from "react";
+import { Link, Outlet, useNavigate } from "react-router-dom";
 import { CartContext } from "../components/context/CartContext";
 import { LoginContext } from "../components/context/LoginContext";
 import { User } from "./MountainLogin";
@@ -10,7 +10,6 @@ function MountainNavbar() {
   const { loginUserData, check_li, setCheck_li, setLoginUserData } =
     useContext(LoginContext);
   const navigate = useNavigate();
-
   const ul_Content: string[] = [
     "MounTrip",
     "Login",
@@ -65,14 +64,15 @@ function MountainNavbar() {
               })}
             </ul>
             <div className="rightIcons">
-              <span>已加入購物車 : {cartState.quantity}</span>
-
-              <span>
+              <div className="cartItems">
+                <ShoppingCartIcon fontSize="large" />
+                <div>{cartState.cartItem.length}</div>
+              </div>
+              <span className="ms-4">
                 {`${
                   loginUserData.nickName !== "" ? loginUserData.nickName : ""
                 } ${User() !== undefined ? User() : ""}`}
               </span>
-
               {User() !== undefined ? (
                 <button
                   onClick={() => {
@@ -101,7 +101,7 @@ function MountainNavbar() {
                   登入
                 </button>
               )}
-              <div className="rightIcons_img">
+              <div className="rightIcons_img ms-4">
                 <img src="/imgs/cat.png" alt="" />
               </div>
             </div>

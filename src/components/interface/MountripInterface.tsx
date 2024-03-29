@@ -7,20 +7,23 @@ export interface FetchData {
   geo_location_sid: string;
   geo_location_town_sid: string;
 }
+interface ICartCount {
+  count: number;
+}
+export interface CartTotalData extends FetchData, ICartCount {}
 
 //Reducer & Context
 export interface CartInitialType {
-  cartItem: [];
-  quantity: number;
+  cartItem: CartTotalData[];
 }
 
 export interface CartAction {
-  type: string;
-  payload: { newItem: FetchData[]; newQuantity: number };
+  type: "AddItem" | "PlusCount" | "MinusCount" | "RemoveItem";
+  payload: { newItem: CartTotalData[] };
 }
 
 export interface ProviderValue {
-  cartState: { cartItem: []; quantity: number };
+  cartState: { cartItem: CartTotalData[] };
   addItem?: (item: any, count: number) => void;
 }
 

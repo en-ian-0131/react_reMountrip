@@ -101,13 +101,28 @@
   background-color: #cee8cb;
 }
 .rightIcons > .rightIcons_img {
-  margin-left: 20px;
   width: 60px;
   border-radius: 50%;
   overflow: hidden;
 }
 .rightIcons > .rightIcons_img > img {
   width: 100%;
+}
+.rightIcons > .cartItems {
+  position: relative;
+}
+.rightIcons > .cartItems > cartItem {
+  font-size: large;
+}
+.rightIcons > .cartItems > div {
+  position: absolute;
+  color: white;
+  font-weight: 700;
+  padding: 2px 5px;
+  border-radius: 50px;
+  background-color: rgb(255, 60, 60);
+  top: -15px;
+  right: -8px;
 }
 
 .first_section {
