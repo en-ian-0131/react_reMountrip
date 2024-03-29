@@ -73,7 +73,7 @@ export default function TrailsFavorite(props: { row: number }) {
       {!Boolean(forFavoriteData.favoriteState) ? (
         <div className="trailsHearts">
           <FavoriteIcon
-            style={{ color: "red", fontSize: "30px" }}
+            style={{ color: "red", fontSize: "30px", cursor: "pointer" }}
             onClick={() => {
               setForFavoriteData({
                 ...forFavoriteData,
@@ -87,7 +87,7 @@ export default function TrailsFavorite(props: { row: number }) {
       ) : (
         <div className="trailsHearts">
           <FavoriteBorderIcon
-            style={{ fontSize: "30px" }}
+            style={{ fontSize: "30px", cursor: "pointer" }}
             onClick={() => {
               setForFavoriteData({
                 ...forFavoriteData,
