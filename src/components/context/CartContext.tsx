@@ -13,7 +13,7 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
   console.log("cartItem:", cartItem);
 
   const addItem = (item: FetchData, count: number) => {
-    const newItem = [...cartItem, { ...item, count: count }];
+    const newItem = [...cartItem, { ...item, count: count, checked: false }];
     dispatch({
       type: "AddItem",
       payload: { newItem: newItem },
@@ -50,12 +50,24 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
     });
   };
 
+  const checkedItem = (sid: number) => {
+    const newItems = cartItem.map((row: CartTotalData) =>
+      row.sid === sid ? { ...row, checked: true } : { ...row, checked: false }
+    );
+    dispatch({
+      type: "CheckedItem",
+      payload: { newItem: newItems },
+    });
+  };
+
+
   const value: any = {
     cartState: state,
     addItem: addItem,
     plusCount: plusCount,
     minusCount: minusCount,
     removeItem: removeItem,
+    checkedItem: checkedItem,
   };
 
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>;

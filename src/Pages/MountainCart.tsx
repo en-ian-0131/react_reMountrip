@@ -1,19 +1,25 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { CartContext } from "../components/context/CartContext";
-import { CartTotalData } from "../components/interface/MountripInterface";
+import {
+  CartCheckTotalPrice,
+  CartTotalData,
+} from "../components/interface/MountripInterface";
 
 function MountainCart() {
-  const { cartState, plusCount, minusCount, removeItem } =
+  const { cartState, plusCount, minusCount, removeItem, checkedItem } =
     useContext<any>(CartContext);
-  const { cartItem }: { cartItem: CartTotalData[] } = cartState;
+  const { cartItem }: { cartItem: CartCheckTotalPrice[] } = cartState;
 
-  const totalPrice = () => {
-    return cartItem
-      .map((row) => {
-        return row.count * row.price;
-      })
-      .reduce((a, b) => a + b, 0);
-  };
+  // useEffect(() => {
+  //   const totalPrice = () => {
+  //     return cartItem
+  //       .filter((row) => row.checked === true)
+  //       .map((row) => row.price * row.count);
+
+  //     // .reduce((a, b) => a + b, 0);
+  //   };
+  //   console.log("123:", totalPrice());
+  // }, [cartItem]);
 
   return (
     <div className="mountainCart">
@@ -23,7 +29,12 @@ function MountainCart() {
           <thead>
             <tr>
               <th>
-                <input type="checkbox" />
+                <input
+                  type="checkbox"
+                  onChange={(e) => {
+                    // console.log("123:", e.target.checked);
+                  }}
+                />
               </th>
               <th>名稱</th>
               <th>單價</th>
@@ -41,7 +52,12 @@ function MountainCart() {
                   key={`${row.trail_name}-${row.trail_img}-${row.sid}-${index}`}
                 >
                   <td className="table_input_checkbox">
-                    <input type="checkbox" />
+                    <input
+                      type="checkbox"
+                      onChange={(e) => {
+                        checkedItem(e.target.checked ? row.sid : 0);
+                      }}
+                    />
                   </td>
                   <td>{row.trail_name}</td>
                   <td>$ {row.price}</td>
@@ -75,7 +91,7 @@ function MountainCart() {
           </tbody>
         </table>
         <section>
-          <p>總金額: $ {totalPrice()}</p>
+          <p>總金額: $ {0}</p>
           <div className="mountainCart_coupon">
             <span>優惠券 :</span>
             <input type="text" />

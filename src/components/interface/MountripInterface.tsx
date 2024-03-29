@@ -10,7 +10,11 @@ export interface FetchData {
 interface ICartCount {
   count: number;
 }
+interface ICartChecked {
+  checked: boolean;
+}
 export interface CartTotalData extends FetchData, ICartCount {}
+export interface CartCheckTotalPrice extends ICartChecked, CartTotalData {} //有被打勾的加進總金額
 
 //Reducer & Context
 export interface CartInitialType {
@@ -18,7 +22,7 @@ export interface CartInitialType {
 }
 
 export interface CartAction {
-  type: "AddItem" | "PlusCount" | "MinusCount" | "RemoveItem";
+  type: "AddItem" | "PlusCount" | "MinusCount" | "RemoveItem" | "CheckedItem";
   payload: { newItem: CartTotalData[] };
 }
 

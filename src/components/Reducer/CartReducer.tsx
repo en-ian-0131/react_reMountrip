@@ -19,6 +19,8 @@ export const CartReducer = (state: ProviderValue, action: CartAction): any => {
       return { ...state, cartItem: payload.newItem };
     case "RemoveItem":
       return { ...state, cartItem: payload.newItem };
+    case "CheckedItem":
+      return { ...state, cartItem: payload.newItem };
     default:
       return { ...state };
   }
