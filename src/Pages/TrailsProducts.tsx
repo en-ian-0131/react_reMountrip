@@ -6,7 +6,6 @@ import TrailsFavorite from "../components/Trails/TrailsFavorite";
 
 function TrailsProducts() {
   const [data, setData] = useState<FetchData[]>([]);
-  const [favorite, setFavorite] = useState<number>(0);
   const getPoductsData = useCallback(async () => {
     try {
       const responseData = await axios.get(
@@ -30,7 +29,6 @@ function TrailsProducts() {
           return (
             <div className="trailsProduct" key={`${v.sid}-${index}`}>
               <TrailsFavorite row={v.sid} />
-
               <img src={`/imgs/${v.trail_img}`} alt="" />
               <p className="tailsProduct_firstChild">{v.trail_name}</p>
               <div>

@@ -1,20 +1,19 @@
-import axios from "axios";
-import { useContext, useEffect, useState } from "react";
-import { FetchData } from "../interface/MountripInterface";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
-import { LoginContext } from "../context/LoginContext";
+import axios from "axios";
+import { useEffect, useState } from "react";
+import LoginFetchCookie from "../hook/LoginCookie";
 
 export default function TrailsFavorite(props: { row: number }) {
   const { row } = props;
   const [controlLike, setControlLike] = useState<number>(0);
-  const { loginUserData }: any = useContext(LoginContext);
   const [forFavoriteData, setForFavoriteData] = useState<{
     memberSid: number;
     trailSid: number;
     favoriteState: number;
   }>({
-    memberSid: loginUserData.sid,
+    memberSid:
+      LoginFetchCookie("sid") !== "" ? Number(LoginFetchCookie("sid")) : 0,
     trailSid: 0,
     favoriteState: 1, // 資料庫1是沒按喜歡  0 是有按喜歡
   });
@@ -25,7 +24,7 @@ export default function TrailsFavorite(props: { row: number }) {
   ) => {
     try {
       const res = await axios.get("http://localhost:3002/getLike", {
-        params: { memberSid: loginUserData.sid },
+        params: { memberSid: LoginFetchCookie("sid") },
       });
       callback(res.data);
     } catch (err) {
@@ -45,7 +44,7 @@ export default function TrailsFavorite(props: { row: number }) {
         }
       }
     });
-  }, []);
+  }, [LoginFetchCookie("sid")]);
 
   const saveLikeApi = async () => {
     try {
