@@ -1,4 +1,4 @@
-export default function TestIan() {
+export default function TestUint8ArrayDownload() {
   const numberArray = [72, 101, 108, 108, 111];
   const uint8Array = new Uint8Array(numberArray);
   console.log("uint8Array:", uint8Array);
@@ -16,8 +16,9 @@ export default function TestIan() {
   };
 
   return (
-    <div>
+    <div className="container">
       <button
+      className="btn btn-primary"
         onClick={() => {
           handleClick();
         }}

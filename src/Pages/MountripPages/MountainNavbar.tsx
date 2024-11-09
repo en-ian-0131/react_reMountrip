@@ -31,7 +31,7 @@ function MountainNavbar() {
               {ul_Content.map((v, i) => {
                 return (
                   <li
-                    key={i}
+                    key={`${i}-${v}`}
                     className="nav-item"
                     onClick={() => {
                       if (
@@ -54,10 +54,10 @@ function MountainNavbar() {
                     <Link
                       to={v === "MounTrip" ? "/" : `/${v}`}
                       className={
-                        check_li === v ? "nav-link li_active" : "nav-link"
+                        `${check_li === v ? "nav-link li_active" : "nav-link"} ${User() && v === "Login" && "d-none"}`
                       }
                     >
-                      {User() && v === "Login" ? "" : v}
+                      {v}
                     </Link>
                   </li>
                 );
@@ -101,9 +101,11 @@ function MountainNavbar() {
                   登入
                 </button>
               )}
-              <div className="rightIcons_img ms-4">
-                <img src="/imgs/cat.png" alt="" />
-              </div>
+              {User() && (
+                <div className="rightIcons_img ms-4">
+                  <img src="/imgs/cat.png" alt="" />
+                </div>
+              )}
             </div>
           </div>
         </div>
