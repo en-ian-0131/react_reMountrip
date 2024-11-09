@@ -1,8 +1,8 @@
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { useContext } from "react";
 import { Link, Outlet, useNavigate } from "react-router-dom";
-import { CartContext } from "../components/context/CartContext";
-import { LoginContext } from "../components/context/LoginContext";
+import { CartContext } from "../../components/MountripComponent/context/CartContext";
+import { LoginContext } from "../../components/MountripComponent/context/LoginContext";
 import { User } from "./MountainLogin";
 
 function MountainNavbar() {

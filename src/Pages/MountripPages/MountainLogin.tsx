@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react";
-import { LoginContext } from "../components/context/LoginContext";
+import { LoginContext } from "../../components/MountripComponent/context/LoginContext";
 import { useNavigate } from "react-router-dom";
-import { LoginData } from "../components/interface/MountripInterface";
+import { LoginData } from "../../components/MountripComponent/interface/MountripInterface";
 
 export function User() {
   const userName = document.cookie

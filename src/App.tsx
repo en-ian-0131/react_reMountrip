@@ -1,11 +1,11 @@
 import "./styles/App.css";
 
-import MountainLogin from "./Pages/MountainLogin";
-import TrailsProducts from "./Pages/TrailsProducts";
-import MountainNavbar from "./Pages/MountainNavbar";
-import MountainMain from "./Pages/MountainMain";
-import MountainMember from "./Pages/MountainMember";
-import MountainCart from "./Pages/MountainCart";
+import MountainLogin from "./Pages/MountripPages/MountainLogin";
+import TrailsProducts from "./Pages/MountripPages/TrailsProducts";
+import MountainNavbar from "./Pages/MountripPages/MountainNavbar";
+import MountainMain from "./Pages/MountripPages/MountainMain";
+import MountainMember from "./Pages/MountripPages/MountainMember";
+import MountainCart from "./Pages/MountripPages/MountainCart";
 
 import {
   createBrowserRouter,
@@ -13,14 +13,14 @@ import {
   createRoutesFromElements,
   Route,
 } from "react-router-dom";
-import { CartProvider } from "./components/context/CartContext";
-import MemberCoupon from "./components/member/MemberCoupon";
-import MemberFavorite from "./components/member/MemberFavorite";
-import MemberHistory from "./components/member/MemberHistory";
-import MemberAchievement from "./components/member/MemberAchievement";
-import MemberLayout from "./components/member/MemberLayout";
-import { LoginProvider } from "./components/context/LoginContext";
-import TestIan from "./Pages/TestIan";
+import { CartProvider } from "./components/MountripComponent/context/CartContext";
+import MemberCoupon from "./components/MountripComponent/member/MemberCoupon";
+import MemberFavorite from "./components/MountripComponent/member/MemberFavorite";
+import MemberHistory from "./components/MountripComponent/member/MemberHistory";
+import MemberAchievement from "./components/MountripComponent/member/MemberAchievement";
+import MemberLayout from "./components/MountripComponent/member/MemberLayout";
+import { LoginProvider } from "./components/MountripComponent/context/LoginContext";
+import TestIan from "./Pages/MountripPages/TestIan";
 
 function App() {
   const MounTripRouter = createBrowserRouter(

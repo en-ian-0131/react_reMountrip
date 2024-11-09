@@ -1,8 +1,8 @@
 import { useState, useEffect, useCallback } from "react";
 import axios from "axios";
-import TrailsProductCount from "../components/TrailsProductCount";
-import { FetchData } from "../components/interface/MountripInterface";
-import TrailsFavorite from "../components/Trails/TrailsFavorite";
+import TrailsProductCount from "../../components/MountripComponent/TrailsProductCount";
+import { FetchData } from "../../components/MountripComponent/interface/MountripInterface";
+import TrailsFavorite from "../../components/MountripComponent/Trails/TrailsFavorite";
 
 function TrailsProducts() {
   const [data, setData] = useState<FetchData[]>([]);

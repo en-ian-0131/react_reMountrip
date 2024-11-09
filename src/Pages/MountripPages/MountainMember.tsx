@@ -1,7 +1,7 @@
 import { useState, useCallback, useEffect, Fragment, useContext } from "react";
 import axios from "axios";
-import { MemberDetail } from "../components/interface/MountripInterface";
-import { LoginContext } from "../components/context/LoginContext";
+import { MemberDetail } from "../../components/MountripComponent/interface/MountripInterface";
+import { LoginContext } from "../../components/MountripComponent/context/LoginContext";
 import { User } from "./MountainLogin";
 
 function MountainMember() {

@@ -1,9 +1,9 @@
 import { useContext, useEffect } from "react";
-import { CartContext } from "../components/context/CartContext";
+import { CartContext } from "../../components/MountripComponent/context/CartContext";
 import {
   CartCheckTotalPrice,
   CartTotalData,
-} from "../components/interface/MountripInterface";
+} from "../../components/MountripComponent/interface/MountripInterface";
 
 function MountainCart() {
   const { cartState, plusCount, minusCount, removeItem, checkedItem } =

@@ -1,5 +1,5 @@
 import { useState, useContext } from "react";
-import { CartContext } from "../components/context/CartContext";
+import { CartContext } from "./context/CartContext";
 import { FetchData } from "./interface/MountripInterface";
 
 function TrailsProductCount({ v }: { v: FetchData }) {
