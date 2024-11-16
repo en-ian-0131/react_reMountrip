@@ -5,6 +5,7 @@
 /public/imgs
 /.pnp
 .pnp.js
+googleLoginConfig.js
 
 # testing
 /coverage
